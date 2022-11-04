@@ -1,0 +1,123 @@
+
+<div style="float: right; clear: both;" class="card-body">
+  <div class="container-fluid">
+    <div class="col-sm-6 col-12 text-sm-end">
+      <div  class="mx-n1">  <button data-toggle="modal" (click)="dd()" data-target="#exampleModal" class="btn d-inline-flex btn-sm btn-primary mx-1" style="background-color:#400D51 ;">  <i class=""></i> <span>Ajouter</span> </button> </div>
+    </div>
+  </div>
+</div>
+<main class="py-6 bg-surface-secondary" style="margin-top: 55px;">
+
+
+<div class="container-fluid">
+  <div class="card shadow border-0 mb-7">
+    <div class="card-header" style="background-color: #400D51;">
+        <h5 style="color:white"class="mb-0">Dépatements</h5>
+    </div>
+    <div class="table-responsive">
+        <table class="table table-hover table-nowrap">
+            <thead class="thead-light">
+                <tr>
+                    <th scope="col">Nom Département</th>
+
+
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+
+                  <tr *ngFor="let item of dataArray ,index as i">
+
+                    <td>{{item.directionname}}</td>
+
+                    <td class="text-end"><button (click)="getName(i,item._id,item.directionname)" type="button" style="background-color: red;" class="btn btn-sm btn-square btn-neutral text-danger-hover"  data-toggle="modal" data-target="#exampleModal2" > <i style="color: white;" class="bi bi-trash"></i> </button> </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+</div>
+</div>
+</main>
+
+
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header" style="background-color: #400D51">
+          <h5 class="modal-title" id="exampleModalLabel" style="color: white;">Ajouter direction</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <!-- form -->
+          <form #f="ngForm" (ngSubmit)="addDirection(f)" >
+            <!--  -->
+
+             <div class="form-row">
+
+              <div class="form-group col-md-10" >
+                <label for="directionname">Nom direction</label>
+                <input type="text" class="form-control" id="directionname" required name="directionname" #directionname="ngModel" ngModel minlength="3" maxlength="30">
+                <div class="alert alert-danger" *ngIf="directionname.errors?.['required'] && directionname.touched ">
+                  Nom de direction est obligatoire
+                </div>
+                <div class="alert alert-danger" on *ngIf="directionname.errors?.['minlength'] ">
+                  Nom de direction minimum 3 char
+                </div>
+
+              </div>
+
+
+
+            </div>
+
+            <div class="alert alert-danger" *ngIf="messageErr" style="width: 50%;">
+              {{messageErr}}
+            </div>
+            <div class="alert alert-success" *ngIf="messageSucc" style="width: 50%;">
+
+              {{messageSucc}}
+            </div>
+            <div class="col-md-10" style="margin-top: 10px;">
+              <div  class="mx-n1">  <button type="submit" class="btn  btn-sm btn-primary mx-1" style="background-color: #400D51; ;"> <span class=" pe-2"> </span> <span>Enregistrer</span> </button> </div>
+            </div>
+
+          </form>
+          <!-- endform -->
+         </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-primary" data-dismiss="modal" style="background-color: #400D51; ;">Annuler</button>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+<!-- De -->
+<div id="exampleModal2" class="modal fade" tabindex="-1" aria-labelledby="exampleModalLabel2" aria-hidden="true">
+  <div class="modal-dialog modal-confirm">
+    <div class="modal-content">
+      <div class="modal-header flex-column">
+        <div class="icon-box">
+          <i class="material-icons">&#xE5CD;</i>
+        </div>
+        <h4 class="modal-title w-100">Es-tu sûr?</h4>
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+      </div>
+
+      <div  style="margin-bottom: 10px;margin-top: 10px;"class="alert alert-danger" *ngIf="messageDel">
+        {{messageDel}}
+      </div>
+      <div style="margin-bottom: 10px;margin-top: 10px;" class="alert alert-success" *ngIf="messageSucc">
+
+        {{messageSucc}}
+      </div>
+      <div class="modal-footer justify-content-center" >
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Annuler</button>
+        <a class="btn btn-danger" (click)="delete()"  style="color: white;">Supprimer</a>
+      </div>
+    </div>
+</div>
+</div>

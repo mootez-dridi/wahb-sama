@@ -1,0 +1,223 @@
+
+<!-- <div class="container-fluid"> -->
+
+  <!-- Page Heading -->
+
+  <!-- DataTales Example -->
+  <!-- <div style="background-color: rgb(53, 42, 42);"class="card shadow mb-4">
+      <div class="card-header py-3">
+          <h6 class="m-0 font-weight-bold " style="color: rgb(1,19,63);">All Users</h6>
+      </div>
+      <div class="card-body">
+
+
+        <div class="container-fluid" >
+
+          <div class="form-group" style="display: inline-block; width: 50%;">
+            <input type="text" class="form-control"  placeholder="Search for..."
+            [(ngModel)]="term" >
+
+              <button class="btn btn-primary" style="float:right; margin-left: 95px; margin-top: -37px;" type="button">
+                  <i class="fas fa-search fa-sm"></i>
+              </button>
+
+
+          </div>
+
+        <a  routerLink="/admin/adduser" class="btn btn-primary addUser"><span class="badge badge-primary" sty>Add User</span></a>
+
+          <div class="table-responsive">
+            <div class="btn badge-danger" *ngIf="messageDel!=''">
+              {{messageDel}}
+            </div>
+              <table  class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                  <thead>
+                      <tr>
+                          <th>First Name</th>
+                          <th>Last Name</th>
+                          <th>Matricule</th>
+                          <th>Direction Name</th>
+                          <th> Actions </th>
+                      </tr>
+                  </thead>
+                  <tfoot>
+                      <tr>
+                        <th>First Name</th>
+                        <th>Last Name</th>
+                        <th>Matricule</th>
+                        <th>Direction Name</th>
+                        <th >Actions</th>
+                      </tr>
+                  </tfoot>
+                  <tbody>
+                      <tr *ngFor="let item of dataArray| filter:term;index as i">
+                        <td >{{item.firstname}}</td>
+                        <td>{{item.lastname}}</td>
+                        <td>{{item.matricule}}</td>
+                        <td>{{item.directionname}}</td>
+                          <td style="display:flex;justify-content:space-between">
+                            <button class="btn btn-success" (click)="getdata(item.hierarchy,item.role,item.directionname,item.statu,item._id)" data-toggle="modal" data-target="#exampleModal">
+                              <span class="badge badge-success">Update</span></button>
+                            <button class="btn btn-info" (click)="deatils(item._id)" >
+                              <span class="badge badge-info">Details</span></button>
+                            <button class="btn btn-danger" (click)="delete(item._id,i,item.matricule)">
+                              <span class="badge badge-danger">Delete</span></button>
+                          </td>
+                      </tr>
+                  </tbody>
+              </table>
+          </div>
+      </div>
+  </div>
+
+</div> -->
+
+
+
+  <!--  -->
+
+
+  <div style="float: right; clear: both;" class="card-body">
+    <div class="container-fluid">
+      <div class="col-sm-6 col-12 text-sm-end">
+        <div  class="mx-n1">  <a routerLink="/admin/addtechno" class="btn d-inline-flex btn-sm btn-primary mx-1"> <span class=" pe-2"> <i class="bi bi-plus"></i> </span> <span>Ajouter</span> </a> </div>
+      </div>
+    </div>
+  </div>
+
+  <main class="py-6 bg-surface-secondary" style="margin-top: 55px;">
+    <div class="container-fluid">
+  <div class="card shadow border-0 mb-7">
+    <div class="card-header" style="background-color: #400D51">
+        <h5 style="color:white"class="mb-0">Technologies</h5>
+    </div>
+    <div class="table-responsive">
+        <table class="table table-hover table-nowrap">
+            <thead class="thead-light">
+                <tr>
+                    <th scope="col">Nom site</th>
+                    <th scope="col">2G</th>
+                    <th scope="col">3G</th>
+                    <th scope="col">4G</th>
+                    <th scope="col">TCU</th>
+                    <th scope="col">ABIS</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+
+                  <tr *ngFor="let item of dataArray| filter:term;index as i">
+                    <td >{{item.nomsite}}</td>
+                    <td>{{item.deuxg}}</td>
+                    <td>{{item.threeg}}</td>
+                    <td>{{item.fourg}}</td>
+                    <td>{{item.tcu}}</td>
+                    <td>{{item.abis}}</td>
+
+                    <td class="text-end">
+                      <a  class="btn btn-sm btn-neutral" (click)="getdata(item.nomsite,item.deuxg,item.threeg,item.fourg,item._id,item.tcu,item.abis )" data-toggle="modal" data-target="#exampleModal"><i class="bi bi-pencil"></i></a> &nbsp;   &nbsp; <button type="button" style="background-color: red;" class="btn btn-sm btn-square btn-neutral text-danger-hover"  data-toggle="modal" data-target="#exampleModal2" > <i style="color: white;" class="bi bi-trash"></i> </button>
+                    </td>
+
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+</div>
+    </div>
+  </main>
+
+  <!--  -->
+
+  <div  class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header" style="background-color: #400D51;">
+          <h5 class="modal-title" id="exampleModalLabel" style="color:white" >Modifier</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+
+          <form #ff="ngForm" (ngSubmit)="updateNewTechno(ff)" >
+
+
+
+
+
+            <div class="form-row">
+
+              <div class="form-group col-md-6">
+                <label for="deuxg">2G</label>
+                <input type="text" class="form-control" [(ngModel)]="dataTechno.deuxg" id="deuxg" required name="deuxg" #deuxg="ngModel" ngModel>
+              </div>
+              <div class="form-group col-md-6">
+                <label for="threeg">3G</label>
+                <input type="text" class="form-control" [(ngModel)]="dataTechno.threeg" id="threeg" required name="threeg" #threeg="ngModel" ngModel>
+              </div>
+              <div class="form-group col-md-6">
+                <label for="fourg">4G</label>
+                <input type="text" class="form-control" [(ngModel)]="dataTechno.fourg" id="fourg" required name="fourg" #fourg="ngModel" ngModel>
+              </div>
+
+
+
+
+
+            </div>
+
+
+
+            <div class="alert alert-danger" *ngIf="messageErr" style="width: 70%;">
+              {{messageErr}}
+
+            </div>
+            <div class="alert alert-success" *ngIf="messageSucc" style="width: 50%;">
+
+              {{messageSucc}}
+            </div>
+            <div class="col-md-10" style="margin-top: 10px;">
+              <div  class="mx-n1">  <button type="submit" class="btn  btn-sm btn-primary mx-1"> <span class=" pe-2"> <i class="bi bi-plus"></i> </span> <span>Enregistrer</span> </button> </div>
+            </div>
+          </form>
+
+
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Annuler</button>
+
+        </div>
+      </div>
+    </div>
+  </div>
+
+<!-- Delete -->
+  <div id="exampleModal2" class="modal fade" tabindex="-1" aria-labelledby="exampleModalLabel2" aria-hidden="true">
+    <div class="modal-dialog modal-confirm">
+      <div class="modal-content">
+        <div class="modal-header flex-column">
+          <div class="icon-box">
+            <i class="material-icons">&#xE5CD;</i>
+          </div>
+          <h4 class="modal-title w-100">Es-tu sur?</h4>
+                  <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+        </div>
+        <div class="modal-body">
+
+
+          <div  style="margin-bottom: 10px;;margin-top: 10px;"class="alert alert-success" *ngIf="messageDel">
+            {{messageDel}}
+          </div>
+          <div  style="margin-bottom: 10px;;margin-top: 10px;"class="alert alert-danger" *ngIf="messageEr">
+            {{messageEr}}
+          </div>
+        </div>
+        <div class="modal-footer justify-content-center" >
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Annuler</button>
+          <a class="btn btn-danger" (click)="deleteOne()"  style="color: white;">Supprimer</a>
+        </div>
+      </div>
+  </div>
+  </div>

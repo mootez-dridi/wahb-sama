@@ -1,0 +1,150 @@
+
+<div style="float: right; clear: both;" class="card-body">
+  <div class="container-fluid">
+    <div class="col-sm-6 col-12 text-sm-end">
+      <div  class="mx-n1">  <a routerLink="/admin/addtypedemande" class="btn d-inline-flex btn-sm btn-primary mx-1"> <span class=" pe-2"> <i class="bi bi-plus"></i> </span> <span>Ajouter</span> </a> </div>
+    </div>
+  </div>
+</div>
+<main class="py-6 bg-surface-secondary" style="margin-top: 55px;">
+
+
+<div class="container-fluid">
+  <div class="card shadow border-0 mb-7">
+    <div class="card-header" style="background-color: rgb(8, 8, 58);">
+        <h5 style="color:white"class="mb-0"> Types Reclamations</h5>
+    </div>
+    <div class="table-responsive">
+        <table class="table table-hover table-nowrap">
+            <thead class="thead-light">
+                <tr>
+                    <th scope="col">Types Reclamation</th>
+                    <th scope="col">Matricule chargé Reclamation</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+
+                  <tr *ngFor="let item of dataArray| filter:term;index as i">
+
+                    <td>{{item.demande}}</td>
+                    <td>{{item.responsable}}</td>
+                    <td class="text-end"><a  class="btn btn-sm btn-neutral"  data-toggle="modal" data-target="#exampleModal"><i class="bi bi-pencil"></i></a> &nbsp; <button type="button" (click)="getInfo(i,item._id,item.demande,item.responsable)" style="background-color: red;" class="btn btn-sm btn-square btn-neutral text-danger-hover"  data-toggle="modal" data-target="#exampleModal2" > <i style="color: white;" class="bi bi-trash"></i> </button> </td>
+
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+</div>
+</div>
+</main>
+
+
+  <!-- Page Heading -->
+
+  <!-- DataTales Example -->
+  <!-- <div class="card shadow mb-4">
+      <div class="card-header py-3">
+          <h6 class="m-0 font-weight-bold text-primary">All Types Demandes</h6>
+      </div>
+
+      <div class="card-body">
+        <div class="container-fluid" >
+
+          <div class="form-group" style="display: inline-block; width: 50%;">
+            <input type="text" class="form-control"  placeholder="Search for..."
+            [(ngModel)]="term" >
+
+              <button class="btn btn-primary" style="float:right; margin-left: 95px; margin-top: -37px;" type="button">
+                  <i class="fas fa-search fa-sm"></i>
+              </button>
+
+
+          </div>
+          <a  routerLink="/admin/addtypedemande" class="btn btn-primary addUser"><span class="badge badge-primary">Add Type Demandes</span></a>
+          <div class="table-responsive">
+              <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                  <thead>
+                      <tr>
+                        <th>Type Demande</th>
+                        <th>Responsable</th>
+                        <th> Actions </th>
+                      </tr>
+                  </thead>
+                  <tfoot>
+                      <tr>
+                        <th>Type Demande</th>
+                        <th>Responsable</th>
+                        <th> Actions </th>
+                      </tr>
+                  </tfoot>
+                  <tbody>
+                      <tr *ngFor="let item of dataArray| filter:term;">
+                        <td>{{item.demande}}</td>
+                        <td>{{item.responsable}}</td>
+                          <td style="display:flex;justify-content:space-around">
+                            <button class="btn btn-success"  >
+                              <span class="badge badge-success">Update</span></button>
+                            <button class="btn btn-danger" >
+                              <span class="badge badge-danger">Delete</span></button>
+                          </td>
+                      </tr>
+                  </tbody>
+              </table>
+          </div>
+      </div>
+  </div>
+
+</div> -->
+
+
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Test</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <!-- form -->
+
+          <!-- endform -->
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+<!-- Del -->
+<!-- De -->
+<div id="exampleModal2" class="modal fade" tabindex="-1" aria-labelledby="exampleModalLabel2" aria-hidden="true">
+  <div class="modal-dialog modal-confirm">
+    <div class="modal-content">
+      <div class="modal-header flex-column">
+        <div class="icon-box">
+          <i class="material-icons">&#xE5CD;</i>
+        </div>
+        <h4 class="modal-title w-100">Es-tu sûr? </h4>
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+      </div>
+      <div class="modal-body">
+
+        {{deleteSucc}}
+        <div  style="margin-bottom: 10px;margin-top: 10px;"class="alert alert-danger" *ngIf="deleteErr">
+          {{deleteErr}}
+        </div>
+      </div>
+      <div class="modal-footer justify-content-center" >
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Annuler</button>
+        <a class="btn btn-danger"  (click)="delete()"  style="color: white;">Supprimer</a>
+      </div>
+    </div>
+</div>
+</div>

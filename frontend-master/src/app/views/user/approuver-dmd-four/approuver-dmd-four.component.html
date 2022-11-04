@@ -1,0 +1,114 @@
+
+
+<main class="py-6 bg-surface-secondary" >
+  <div class="container-fluid">
+    <section  class="container" >
+      <h1>Reclamations</h1>
+        <div class="col-sm" *ngFor="let item of dataArray;index as i">
+          <article class="card fl-left">
+            <section class="date">
+              <time datetime="23th feb">
+                <span></span><span></span>
+              </time>
+            </section>
+            <section class="card-cont">
+              <span>Nom Du Direction :{{item.direction_demandeur}} </span> <br>
+
+              <div >
+                <button  type="button" class="btn myEditBtn"  (click)="getdata(item._id,i)"   data-toggle="modal" data-target="#exampleModal">
+                  <i style="color: blue;" class="fas fa-check"></i>
+                </button>
+                <button  type="button" class="btn myEditBtn2 "  (click)="getdata(item._id,i)"   data-toggle="modal" data-target="#exampleModal2">
+                  <i  style="color: red;" class="bi bi-trash"></i>
+                </button>
+              </div>
+
+              <!-- <button  type="button"  (click)="getdata(item._id,i)" style="background-color: rgb(81, 81, 139); color: white;" class="btn myEditBtn"   data-toggle="modal" data-target="#exampleModal">
+                <i class="fas fa-check"></i>
+              </button> -->
+              <span>Matricule Responsable :{{item.matricule_responsable}} </span><br>
+              <span>Matricule Demandeur :{{item.matricule_demandeur}} </span><br>
+
+
+              <div class="even-date">
+
+               <time>
+                 <span>Besoin : {{item.besoin}}</span>
+               </time>
+              </div>
+              <a style="background-color: chocolate;">{{item.etat}}</a>
+            </section>
+          </article>
+        </div>
+    </section>
+
+  </div>
+</main>
+
+
+
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Es-tu sûr ?</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <!-- form -->
+        <form #ff="ngForm"  (ngSubmit)="approuverDmdFour(ff)" >
+          <!--  -->
+
+
+
+
+          {{msgSucc}}
+          <button type="submit" class="btn btn-primary" >Approuver</button>
+        </form>
+
+        <!-- endform -->
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Annuler</button>
+
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- del -->
+
+<div id="exampleModal2" class="modal fade" tabindex="-1" aria-labelledby="exampleModalLabel2" aria-hidden="true">
+  <div class="modal-dialog modal-confirm">
+    <div class="modal-content">
+      <div class="modal-header flex-column">
+        <div class="icon-box">
+          <i class="material-icons">&#xE5CD;</i>
+        </div>
+        <h4 class="modal-title w-100">Es-tu sûr?</h4>
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+      </div>
+      <div class="modal-body">
+
+
+      </div>
+
+      <div class="modal-footer justify-content-center" >
+        <button type="button"  class="btn btn-secondary" data-dismiss="modal">Annuler</button>
+        <form #ff="ngForm"  (ngSubmit)="refusDmdFour(ff)" >
+
+
+
+
+
+
+          <button class="btn btn-danger"   style="color: white;">Supprimer</button>
+        </form>
+
+
+      </div>
+    </div>
+</div>
+</div>

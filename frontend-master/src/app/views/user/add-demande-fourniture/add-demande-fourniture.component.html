@@ -1,0 +1,50 @@
+
+<main class="py-6 bg-surface-secondary" style="margin-top: 55px;width: 60%" >
+
+
+  <div class="container-fluid">
+    <button  style="margin-bottom: 20px;width: 80px;height: 25px;padding: 0; color: black;background-color: white;" routerLink="/user/demandeFourniture" type="button"  class="btn btn-warning">Retour</button>
+
+
+    <div class="card shadow border-0 mb-7">
+      <div class="card-header" style="background-color: rgb(8, 8, 58);">
+          <h5 style="color:white"class="mb-0">Reclamation Panne</h5>
+      </div>
+      <div class="container" style="margin-top: 10px;">
+        <div class="row ">
+          <form #f="ngForm"  (ngSubmit)="addDemandeFourniture(f)">
+            <!--  -->
+
+            <div class="form-row">
+
+              <div class="form-group col-md-6" >
+                <label for="besoin">Role</label>
+                <select id="role" style="height: 50px;" class="form-control"  id="besoin" required name="besoin" #demande="ngModel" ngModel>
+                  <option >ALARME 1</option>
+                  <option >ALARME 2</option>
+                  <option >ALARME 3</option>
+
+                </select>
+              </div>
+            </div>
+
+
+
+
+
+
+
+            <div  style="margin-bottom: 10px; width: 50%;margin-top: 5px;"class="alert alert-danger" *ngIf="msgErr">
+              {{msgErr}}
+            </div>
+            <div  style="margin-bottom: 10px; width: 50%;margin-top: 5px;"class="alert alert-success" *ngIf="msgSucc">
+              {{msgSucc}}
+            </div>
+            <button style="margin-bottom: 50px;" type="submit" class="btn btn-primary" >Enregistrer</button>
+          </form>
+        </div>
+        </div>
+
+  </div>
+  </div>
+  </main>

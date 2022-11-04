@@ -1,0 +1,61 @@
+
+
+<main class="py-6 bg-surface-secondary" style="margin-top: 25px;margin-right: 45%;">
+  <div class="container-fluid">
+    <button  style="margin-bottom: 20px;width: 80px;height: 25px;padding: 0; color: rgb(255, 255, 255);background-color: #400D51;" routerLink="/admin/alltypesdemandes" type="button"  class="btn btn-sm">Retour</button>
+
+<div class="card shadow border-0 mb-7">
+  <div class="card-header" style="background-color: rgb(8, 8, 58);">
+      <h5 style="color:white"class="mb-0">Ajouter type ticket</h5>
+  </div>
+  <div class="container" style="margin-top: 10px;margin-bottom: 10px;">
+
+    <form #f="ngForm" (ngSubmit)="addTypeDemande(f)" >
+      <!--  -->
+
+      <div class="form-row">
+
+        <div class="form-group col-md-6" >
+          <label for="firstname">Type ticket</label>
+          <input type="text" class="form-control" id="demande" required name="demande" #demande="ngModel" ngModel maxlength="30">
+
+        </div>
+
+
+      </div>
+
+      <div class="form-row">
+      <div class="form-group col-md-6">
+        <label for="directionname">Nom directions de chargé ticket</label>
+        <select id="directionname"  style="height:45px;" (change)="matDirection($any($event.target).value)" class="form-control" >
+          <option *ngFor="let directionname of dataDirection" [value]="directionname.directionname" >{{directionname.directionname}}</option>
+        </select>
+      </div>
+      </div>
+      <div class="form-row">
+
+        <div class="form-group col-md-6">
+          <label for="responsable">Matricule chargé tickets</label>
+          <select id="responsable"  class="form-control" style="height:45px;" name="responsable"  #responsable="ngModel" ngModel>
+            <option value="null"></option>
+            <option *ngFor="let user of dataMat" >{{user.matricule}}</option>
+          </select>
+        </div>
+
+
+      </div>
+
+
+
+      <div  style="margin-bottom: 10px;margin-top: 10px;" style="width: 50%;" class="alert alert-success" *ngIf="messageS">
+        {{messageS}}
+      </div>
+       <div class="alert alert-danger" *ngIf="messageErr" style="width: 50%;">
+        {{messageErr}}
+      </div>
+      <div  class="mx-n1"  style="float: right; margin-bottom: 20px;">  <button type="submit" class="btn d-inline-flex btn-sm btn-primary mx-1"> <span class=" pe-2">  </span> <span>Enregistrer</span> </button> </div>
+    </form>
+  </div>
+</div>
+  </div>
+</main>

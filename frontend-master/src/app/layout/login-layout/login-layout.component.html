@@ -1,0 +1,59 @@
+ <body>
+
+<div class="section">
+    <div class="container">
+        <div class="row full-height justify-content-center">
+            <div class="col-12 text-center align-self-center py-5">
+                <div class="section pb-5 pt-5 pt-sm-2 text-center">
+                  <div class="container-fluid">
+                    <img src="../../../assets/mylayout/img/tt.png" style="margin-left:50px;width: 140px;" alt="..."> </div>
+                                        <!-- <h6 class="mb-0 pb-3"><span style=" color: #c4c3ca;">Log In </span><span style=" color: #c4c3ca;">Forgot your password?</span></h6> <input class="checkbox" type="checkbox" id="reg-log" name="reg-log" /> <label for="reg-log"></label> -->
+                    
+
+                                        <div class="card-3d-wrap mx-auto">
+                        <div class="card-3d-wrapper">
+                            <div class="card-front">
+                                <div class="center-wrap">
+                                    <div class="section text-center">
+                                      <form action="" #f="ngForm" (ngSubmit)="login(f)">
+                                        <!--img src="../../../assets/mylayout/img/91dd55d8d1ba48b399bce42d6b8ce36c__1_-removebg-preview.png" width="150px">-->
+
+                                        <div class="form-group"> <input type="email" name="email"  #email ngModel class="form-style" placeholder="Email" id="logemail" autocomplete="off"> <i class="input-icon uil uil-at"></i> </div>
+                                        <div class="form-group mt-2">
+                                           <input type="password" name="password" #password ngModel class="form-style" placeholder="Mot de passe" id="logpass" autocomplete="off">
+                                            <i class="input-icon uil uil-lock-alt"></i> </div> <button class="btn mt-4">Se connecter</button>
+                                        <p class="mb-0 mt-4 text-center"><a href="#0" class="link">Mot de passe oublié?</a></p>
+                                        <p style="color: red;">
+                                          {{messageError}}
+                                        </p>
+                                        </form>
+                                    </div>
+                                    <!-- <form action="" #f="ngForm" (ngSubmit)="login(f)">
+                                      <h3>SIGN IN</h3>
+                                      <input  type="email" name="email"  #email ngModel aria-describedby="emailHelp" placeholder="EMAIL">
+                                      <input type="password"  name="password" id="exampleInputPassword" #password ngModel placeholder="PASSWORD">
+                                     <div class="alert alert-danger" *ngIf="messageError"> {{messageError}}</div>
+                                      <button class="submit">LET'S GO</button>
+                                    </form> -->
+                                </div>
+                            </div>
+                            <div class="card-back">
+                                <div class="center-wrap">
+                                    <div class="section text-center">
+                                        <h4 class="mb-4 pb-3">Sign Up</h4>
+                                        <div class="form-group"> <input type="text" name="logname" class="form-style" placeholder="Your Full Name" id="logname" autocomplete="off"> <i class="input-icon uil uil-user"></i> </div>
+                                        <div class="form-group mt-2"> <input type="email" name="logemail" class="form-style" placeholder="Your Email" id="logemail" autocomplete="off"> <i class="input-icon uil uil-at"></i> </div>
+                                        <div class="form-group mt-2"> <input type="password" name="logpass" class="form-style" placeholder="Your Password" id="logpass" autocomplete="off"> <i class="input-icon uil uil-lock-alt"></i> </div> <a href="#" class="btn mt-4">submit</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+</body>
+

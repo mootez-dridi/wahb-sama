@@ -1,0 +1,92 @@
+
+<main class="py-6 bg-surface-secondary" style="margin-top: 25px;margin-left: 15%;margin-right: 15%;">
+  <div class="container-fluid">
+    <button  style="margin-bottom: 20px;width: 80px;height: 25px;padding: 0; color: rgb(255, 255, 255);background-color: #400D51;" routerLink="/admin/allusers" type="button"  class="btn btn-sm">Retour</button>
+
+<div  class="card shadow border-0 mb-7">
+  <div class="card-header" style="background-color: #400D51">
+      <h5 style="color:white"class="mb-0">Ajouter User</h5>
+  </div>
+  <div class="container" style="margin-top: 15px ;">
+
+    <form #f="ngForm" (ngSubmit)="addUser(f)">
+      <!--  -->
+
+      <div class="form-row" >
+        <div class="form-group col-md-4" >
+
+          <label for="firstname">Nom</label>
+          <input type="text" placeholder="Nom"  autocomplete="off" class="form-control" id="firstname" required name="firstname" #firstname="ngModel" ngModel maxlength="30">
+          <div class="alert alert-danger" *ngIf="firstname.errors?.['required'] && firstname.touched ">
+            Nom obligatoire
+          </div>
+          <div class="alert alert-danger" on *ngIf="firstname.errors?.['minlength'] ">
+            Nom doit contenir au moins 3 caractères
+          </div>
+
+          <label for="lastname">Prenom</label>
+          <input type="text" placeholder="Prenom" autocomplete="off" class="form-control" id="lastname" required name="lastname" #lastname="ngModel" ngModel minlength="3" maxlength="30">
+          <div class="alert alert-danger" *ngIf="lastname.errors?.['required'] && lastname.touched ">
+            Prenom obligatoire
+          </div>
+          <div class="alert alert-danger" *ngIf="lastname.errors?.['minlength'] ">
+            Prenom doit contenir au moins 3 caractères
+          </div>
+
+          <label for="inputEmail4">Email</label>
+          <input type="email" autocomplete="off" class="form-control" id="inputEmail4" placeholder="email" email required name="email" #email="ngModel" ngModel>
+          <div class="alert alert-danger" *ngIf="email.errors?.['required'] && email.touched ">
+            Email obligatoire
+          </div>
+
+          <label for="matricule">Matricule</label>
+          <input type="text" placeholder="Matricule" class="form-control" id="matricule" autocomplete="off" required name="matricule" #matricule="ngModel" ngModel minlength="" >
+          <div class="alert alert-danger" *ngIf="matricule.errors?.['required'] && matricule.touched ">
+            Matricule obligatoire
+          </div>
+
+          <label for="directionname">Direction </label>
+          <select id="directionname"  style="height: 50px;" (change)="matDirection($any($event.target).value)" class="form-control"   name="directionname" #directionname="ngModel" ngModel>
+            <option [selected]="true" disabled>--DEPARTEMENT--</option>
+            <option *ngFor="let directionname of dataDirection" [value]="directionname.directionname" >{{directionname.directionname}}</option>
+          </select>
+
+          <label for="hierarchy">Responsable</label>
+            <select id="hierarchy"  class="form-control" name="hierarchy"  #hierarchy="ngModel" ngModel style="height: 50px;">
+                <option value="null">Sans Responsable</option>
+                <option *ngFor="let user of dataMat" >{{user.matricule}}</option>
+            </select>
+
+          <label for="inputPassword4">Mot de passe</label>
+          <input type="password" placeholder="Mot de passe" current-password="test" class="form-control"  id="inputPassword4" required name="password" #password="ngModel" ngModel>
+          <div class="alert alert-danger" *ngIf="password.errors?.['required'] && password.touched ">
+            Mot de passe obligatoire
+          </div>
+
+          <label for="role">Role</label>
+          <select id="role" class="form-control"  name="role"  #role="ngModel" ngModel  style="height: 50px;">
+            <option >user</option>
+            <option >admin</option>
+            <option >chefService</option>
+            <option >surveillance</option>
+            <option >technicien</option>
+          </select>
+
+
+
+
+          <div  class="mx-n1"  style="margin-bottom: 20px; ">  <button style=" width: 130px" type="submit" class="btn d-inline-flex btn-sm btn-primary mx-1"> <span class=" pe-2"> <i class="bi bi-plus"></i> </span> <span>Enregistrer</span> </button> </div>
+        </div>
+      </div>
+       <div  style="margin-bottom: 10px; width: 50%;margin-top: 10px;"class="alert alert-danger" *ngIf="messageErr">
+        {{messageErr}}
+      </div>
+      <div  style="margin-bottom: 10px; width: 50%;margin-top: 10px;"class="alert alert-success" *ngIf="messageSucc">
+        {{messageSucc}}
+      </div>
+
+    </form>
+  </div>
+</div>
+  </div>
+</main>

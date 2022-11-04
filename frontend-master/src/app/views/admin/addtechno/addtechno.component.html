@@ -1,0 +1,82 @@
+
+<main class="py-6 bg-surface-secondary" style="margin-top: 25px;margin-left: 15%;margin-right: 15%;">
+  <div class="container-fluid">
+    <button  style="margin-bottom: 20px;width: 80px;height: 25px;padding: 0; color: rgb(255, 255, 255);background-color: #400D51;" routerLink="/admin/techno" type="button"  class="btn btn-sm">Retour</button>
+
+<div  class="card shadow border-0 mb-7">
+  <div class="card-header" style="background-color:#400D51;">
+      <h5 style="color:white"class="mb-0">Ajouter Technologies</h5>
+  </div>
+  <div class="container" style="margin-top: 15px ;">
+
+    <form #f="ngForm" (ngSubmit)="addTechno(f)" >
+      <!--  -->
+
+      <div class="form-row" >
+        <div class="form-group col-md-4" >
+          <label for="nomsite">Nom site</label>
+          <select id="nomsite" class="form-control"  name="nomsite"  #nomsite="ngModel" ngModel  style="height: 50px;">
+            <option >gbeli</option>
+            <option >Jandouba</option>
+            <option >Siliana</option>
+            <option >Kef</option>
+            <option >tunis</option>
+          </select>
+
+
+          <label for="deuxg">2G</label>
+          <select id="deuxg" class="form-control"  name="deuxg"  #deuxg="ngModel" ngModel  style="height: 50px;">
+            <option >G900</option>
+            <option >G1800</option>
+
+          </select>
+
+          <label for="threeg">3G</label>
+          <select id="threeg" class="form-control"  name="threeg"  #threeg="ngModel" ngModel  style="height: 50px;">
+            <option >U900</option>
+            <option >U2100</option>
+
+          </select>
+
+          <label for="fourg">4G</label>
+          <select id="fourg" class="form-control"  name="fourg"  #fourg="ngModel" ngModel  style="height: 50px;">
+            <option >L800</option>
+            <option >L1800</option>
+
+          </select>
+
+          <label for="tcu">TCU/SIU</label>
+          <select id="tcu" class="form-control"  name="tcu"  #tcu="ngModel" ngModel  style="height: 50px;">
+            <option >TCU</option>
+            <option >SIU</option>
+
+          </select>
+
+          <label for="abis">ABIS OVERIP</label>
+          <select id="abis" class="form-control"  name="abis"  #abis="ngModel" ngModel  style="height: 50px;">
+            <option >TDM</option>
+            <option >IP</option>
+
+          </select>
+
+
+
+
+
+<br>
+
+          <div  class="mx-n1"  style="margin-bottom: 20px; ">  <button style=" width: 130px" type="submit" class="btn d-inline-flex btn-sm btn-primary mx-1"> <span class=" pe-2"> <i class="bi bi-plus"></i> </span> <span>Enregistrer</span> </button> </div>
+        </div>
+      </div>
+       <div  style="margin-bottom: 10px; width: 50%;margin-top: 10px;"class="alert alert-danger" *ngIf="messageErr">
+        {{messageErr}}
+      </div>
+      <div  style="margin-bottom: 10px; width: 50%;margin-top: 10px;"class="alert alert-success" *ngIf="messageSucc">
+        {{messageSucc}}
+      </div>
+
+    </form>
+  </div>
+</div>
+  </div>
+</main>
