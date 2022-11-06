@@ -6,18 +6,18 @@ import { UserService } from '../../services/user.service';
   templateUrl: './demande-fourniture-accepter.component.html',
   styleUrls: ['./demande-fourniture-accepter.component.css']
 })
-export class DemandeFournitureAccepterComponent implements OnInit {
+export class ReclamationseAccepterComponent implements OnInit {
 
   dataArray:any=[]
   constructor(private us:UserService) {
-
-  }
-
-  ngOnInit(): void {
     let matricule = this.us.userInfo().matricule
     this.us.getDemandeFourUser2(matricule).subscribe((rep)=>{
       this.dataArray=rep
 
     })
+  }
+
+  ngOnInit(): void {
+
   }
 }

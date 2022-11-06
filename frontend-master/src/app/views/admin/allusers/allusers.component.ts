@@ -42,14 +42,11 @@ export class AllusersComponent implements OnInit {
       this.messageDel=''
       this.messageEr=''
       this.dataArray.splice(this.myI,1)
-      this.myI=-1;
-      this.messageDel="User Supprimé"
-
+      this.messageDel="User Supprimé "
+      this.myI=100000000
 
 
     },(err:HttpErrorResponse)=>{
-      this.messageDel=''
-      this.messageEr=''
       this.messageEr=err.error
        this.myI=100000000
 

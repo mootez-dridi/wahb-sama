@@ -6,7 +6,7 @@ import { UserService } from '../../services/user.service';
   templateUrl: './demande-fourniture.component.html',
   styleUrls: ['./demande-fourniture.component.css']
 })
-export class DemandeFournitureComponent implements OnInit {
+export class ReclamationseComponent implements OnInit {
 
   constructor() {
 

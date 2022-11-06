@@ -8,7 +8,7 @@ import { UserService } from '../../services/user.service';
   templateUrl: './add-demande-fourniture.component.html',
   styleUrls: ['./add-demande-fourniture.component.css']
 })
-export class AddDemandeFournitureComponent implements OnInit {
+export class AddReclamationseComponent implements OnInit {
   msgErr=""
   msgSucc=""
   constructor(private us:UserService,private route:Router) {
@@ -17,7 +17,8 @@ export class AddDemandeFournitureComponent implements OnInit {
 
   ngOnInit(): void {
   }
-  addDemandeFourniture(f:any){
+  addReclamationse(f:any){
+
    this.msgErr=""
    this.msgSucc=""
     let data
@@ -43,7 +44,7 @@ export class AddDemandeFournitureComponent implements OnInit {
     console.log(f.value.etat,et)
     console.log(this.us.userInfo().hierarchy)
     data=f.value
-    this.us.addDemandeFourniture(data).subscribe((rep)=>{
+    this.us.addReclamationse(data).subscribe((rep)=>{
       this.msgSucc="Reclamation Ajouté"
     },(err:HttpErrorResponse)=>{
       this.msgErr=err.error.error

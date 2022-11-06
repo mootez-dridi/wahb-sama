@@ -1,6 +1,6 @@
 const   mongoose = require('mongoose')
 const {User} = require('./user.model')
-const {DemandeFourniture} = require('./demandeFourniture.model')
+const {Reclamationse} = require('./reclamations.model')
 const Joi =require('joi')
 let schemaDirection = mongoose.Schema({
     directionname:{
@@ -127,7 +127,7 @@ exports.deleteOneDirection=(id,directionname)=>{
                 mongoose.disconnect()
                 reject("Direction non vide")
             }
-            return DemandeFourniture.findOne({direction_demandeur:directionname, $or: [{ etat: "APPROUVER" }, { etat: "En Att" }]})
+            return Reclamationse.findOne({direction_demandeur:directionname, $or: [{ etat: "APPROUVER" }, { etat: "En Att" }]})
             .then((doc)=>{
                 if(doc){
                     mongoose.disconnect()

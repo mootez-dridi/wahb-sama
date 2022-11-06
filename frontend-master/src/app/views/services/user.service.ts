@@ -18,7 +18,7 @@ export class UserService {
 
   }
 
-  addDemandeFourniture(profile:any){
+  addReclamationse(profile:any){
     return this.http.post('http://localhost:3000/adddemande',profile)
   }
 
@@ -67,7 +67,7 @@ export class UserService {
     return this.http.patch('http://localhost:3000/demandeInformatique/'+id,newprofile)
   }
 
-  demandeFournitureUserAtt(matricule:any){
+  ReclamationseUserAtt(matricule:any){
     return this.http.get('http://localhost:3000/demandeUserAtt/'+matricule)
   }
   getOneUser(id:any){

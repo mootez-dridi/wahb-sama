@@ -3,7 +3,7 @@ const bcrypt = require('bcrypt')
 const jwt = require('jsonwebtoken')
 require('dotenv').config()
 const Joi = require('joi');
-const {DemandeFourniture} = require('./demandeFourniture.model')
+const {Reclamationse} = require('./reclamations.model')
 const {TypeDemande} = require('./typeDemande.model')
 
 
@@ -22,7 +22,7 @@ const schemaValidation=Joi.object({
 const UpdateValidation=Joi.object({
     statu :Joi.boolean().required(),
     hierarchy:Joi.string().min(3).max(255),
-    directionname : Joi.string().valid('RADIO','ADM'),
+    directionname : Joi.string().valid('RADIO','ADMIN'),
     role: Joi.string().valid('user','technicien','chefService','surveillance'),
 })
 
@@ -218,46 +218,17 @@ exports.deleteOneUser=(id,matricule)=>{
                 mongoose.disconnect()
                 reject("impossible de supprimer responsable")
             }
-            return TypeDemande.findOne({responsable:matricule})
-            .then((doc)=>{
-                if(doc){
-                    mongoose.disconnect()
-                    reject("Impossible de supprimer chargé reclamation")
-                }
+            
                 // 
-                return User.findOne({matricule:matricule})
-                .then((doc)=>{
-                    if(!doc){
-                        mongoose.disconnect()
-                        reject()
-                    }
-                    return DemandeFourniture.findOne({matricule_demandeur:matricule, $or: [{ etat: "APPROUVER" }, { etat: "En Att" }]})
-                })
-                .then((doc)=>{
-                    if(doc){
-                        mongoose.disconnect()
-                        reject("Demande En Cours")
-                    }
-                })
-                .then((doc)=>{
-                    if(doc){
-                        mongoose.disconnect()
-                        reject("Demandez En Cours")
-                    }
-                    return User.findOne({matricule:matricule,role:'user'})
-                })
-                .then((doc)=>{
-                    if(!doc){
-                        mongoose.disconnect()
-                        reject("Verifier le role user")
-                    }
+               
+               
                    return User.deleteOne({_id:id})
                 })
             })
            
         })
             
-        }).then((doc)=>{
+        .then((doc)=>{
            
             mongoose.disconnect()
             reslove(doc)
@@ -265,8 +236,8 @@ exports.deleteOneUser=(id,matricule)=>{
             mongoose.disconnect()
             reject(err)
         })
-    })
-}
+    }
+
 
 
 exports.updateOneUser=(id,matricule,statu,hierarchy,directionname,role)=>{
@@ -285,7 +256,7 @@ exports.updateOneUser=(id,matricule,statu,hierarchy,directionname,role)=>{
                         mongoose.disconnect()
                         reject("User et son responsable  differente")
                     }
-                    return DemandeFourniture.findOne({matricule_demandeur:matricule, $or: [{ etat: "APPROUVER" }, { etat: "En Att" }]})
+                    return Reclamationse.findOne({matricule_demandeur:matricule, $or: [{ etat: "APPROUVER" }, { etat: "En Att" }]})
                     .then((doc)=>{
                         if(doc){
                             mongoose.disconnect()

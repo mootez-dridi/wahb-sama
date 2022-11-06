@@ -1,17 +1,17 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
-import { DemandeFournitureAttRoutingModule } from './demande-fourniture-att-routing.module';
-import { DemandeFournitureAttComponent } from './demande-fourniture-att.component';
+import { ReclamationseAttRoutingModule } from './demande-fourniture-att-routing.module';
+import { ReclamationseAttComponent } from './demande-fourniture-att.component';
 
 
 @NgModule({
   declarations: [
-    DemandeFournitureAttComponent
+    ReclamationseAttComponent
   ],
   imports: [
     CommonModule,
-    DemandeFournitureAttRoutingModule
+    ReclamationseAttRoutingModule
   ]
 })
-export class DemandeFournitureAttModule { }
+export class ReclamationseAttModule { }

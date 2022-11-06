@@ -1,17 +1,17 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
-import { DemandeFournitureRefRoutingModule } from './demande-fourniture-ref-routing.module';
-import { DemandeFournitureRefComponent } from './demande-fourniture-ref.component';
+import { ReclamationseRefRoutingModule } from './demande-fourniture-ref-routing.module';
+import { ReclamationseRefComponent } from './demande-fourniture-ref.component';
 
 
 @NgModule({
   declarations: [
-    DemandeFournitureRefComponent
+    ReclamationseRefComponent
   ],
   imports: [
     CommonModule,
-    DemandeFournitureRefRoutingModule
+    ReclamationseRefRoutingModule
   ]
 })
-export class DemandeFournitureRefModule { }
+export class ReclamationseRefModule { }

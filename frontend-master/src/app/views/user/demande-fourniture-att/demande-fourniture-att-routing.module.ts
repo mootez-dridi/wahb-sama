@@ -1,13 +1,13 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { DemandeFournitureAttComponent } from './demande-fourniture-att.component';
+import { ReclamationseAttComponent } from './demande-fourniture-att.component';
 
 const routes: Routes = [
-  {path:'',component:DemandeFournitureAttComponent}
+  {path:'',component:ReclamationseAttComponent}
 ];
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],
   exports: [RouterModule]
 })
-export class DemandeFournitureAttRoutingModule { }
+export class ReclamationseAttRoutingModule { }

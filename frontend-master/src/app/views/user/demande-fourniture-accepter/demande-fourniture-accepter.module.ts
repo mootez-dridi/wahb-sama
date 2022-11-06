@@ -1,14 +1,14 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
-import { DemandeFournitureAccepterRoutingModule } from './demande-fourniture-accepter-routing.module';
+import { ReclamationseAccepterRoutingModule } from './demande-fourniture-accepter-routing.module';
 
 
 @NgModule({
   declarations: [],
   imports: [
     CommonModule,
-    DemandeFournitureAccepterRoutingModule
+    ReclamationseAccepterRoutingModule
   ]
 })
-export class DemandeFournitureAccepterModule { }
+export class ReclamationseAccepterModule { }

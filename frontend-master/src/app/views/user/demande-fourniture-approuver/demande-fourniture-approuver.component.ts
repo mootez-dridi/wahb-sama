@@ -6,7 +6,7 @@ import { UserService } from '../../services/user.service';
   templateUrl: './demande-fourniture-approuver.component.html',
   styleUrls: ['./demande-fourniture-approuver.component.css']
 })
-export class DemandeFournitureApprouverComponent implements OnInit {
+export class ReclamationseApprouverComponent implements OnInit {
 
 
   dataArray:any=[]

@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { DemandeFournitureRefComponent } from './demande-fourniture-ref.component';
+import { ReclamationseRefComponent } from './demande-fourniture-ref.component';
 
-describe('DemandeFournitureRefComponent', () => {
-  let component: DemandeFournitureRefComponent;
-  let fixture: ComponentFixture<DemandeFournitureRefComponent>;
+describe('ReclamationseRefComponent', () => {
+  let component: ReclamationseRefComponent;
+  let fixture: ComponentFixture<ReclamationseRefComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ DemandeFournitureRefComponent ]
+      declarations: [ ReclamationseRefComponent ]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(DemandeFournitureRefComponent);
+    fixture = TestBed.createComponent(ReclamationseRefComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

@@ -6,7 +6,7 @@ import { UserService } from '../../services/user.service';
   templateUrl: './demande-fourniture-ref.component.html',
   styleUrls: ['./demande-fourniture-ref.component.css']
 })
-export class DemandeFournitureRefComponent implements OnInit {
+export class ReclamationseRefComponent implements OnInit {
 
   dataArray:any=[]
   constructor(private us:UserService) {
